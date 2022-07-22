@@ -12,13 +12,10 @@ Depending on your preferred package manager, follow the instructions below to de
 
 ### Using NPM
 
+- Run `npm i -g serverless` to install serverless globally
+- Additionally, we would need our `aws cli` configured - follow [quick guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) to setup
 - Run `npm i` to install the project dependencies
 - Run `npx sls deploy` to deploy this stack to AWS
-
-### Using Yarn
-
-- Run `yarn` to install the project dependencies
-- Run `yarn sls deploy` to deploy this stack to AWS
 
 ## Test your service
 
@@ -26,7 +23,8 @@ This template contains a single lambda function triggered by an HTTP request mad
 
 - requesting any other path than `/api/visitors?date=` with any other method than `GET` will result in API Gateway returning a `403` HTTP error code
 - A `GET` request to `/api/visitors?date=` with a query param **not** containing a string property named `date` will result in API Gateway returning a `400` HTTP error code
-- A `GET` request to `/api/visitors?date=` with a query param containing a string property named `date` will result in API Gateway returning a `200` HTTP status code with a 'attendance' object that is processed by the Lambda.
+- A `GET` request to `/api/visitors?date=xxx&ignore=` with a query param **not** containing a string property named `ignore` will not result in API Gateway returning a `400` HTTP error code as it is optional
+- A `GET` request to `/api/visitors?date=` with a query param containing a string property named `date` will result in API Gateway returning a `200` HTTP status code with a 'attendance' object that is processed by the Lambda. 
 
 > :warning: As is, this template, once deployed, opens a **public** endpoint within your AWS account resources. Anybody with the URL can actively execute the API Gateway endpoint and the corresponding lambda. This can be protected using an authentication method.
 
@@ -35,7 +33,6 @@ This template contains a single lambda function triggered by an HTTP request mad
 In order to test the 'attendance' function locally, run the following command:
 
 - `npx sls invoke local -f visitors --path ./path-to-data.json` if you're using NPM
-- `yarn sls invoke local -f visitors --path ./path-to-data.json` if you're using Yarn
 
 Check the [sls invoke local command documentation](https://www.serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/) for more information.
 
