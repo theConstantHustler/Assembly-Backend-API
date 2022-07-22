@@ -14,6 +14,7 @@ Assuming `npm` as the preferred package manager, follow the instructions below t
 - Additionally, we would need our `aws cli` configured - follow [quick guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) to setup
 - Run `npm i` to install the project dependencies
 - Run `npx sls deploy` to deploy this stack to AWS
+- Run `npm test` to test using JEST
 
 ## Test your service
 
@@ -53,6 +54,7 @@ The project code base is mainly located within the `src` folder. This folder is 
 - `interfaces` - containing structure that defines the contract in the application
 - `service` - containing helper class the parses the data
 - `utils` - containing utilities
+- `tests`- containing test cases
 
 ```
 
