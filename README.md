@@ -2,13 +2,11 @@
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).
 
-For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
-
 ## Installation/deployment instructions
 
-Depending on your preferred package manager, follow the instructions below to deploy your project.
+Assuming `npm` as the preferred package manager, follow the instructions below to deploy your project.
 
-> **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If you're using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime.
+> **Requirements**: NodeJS `lts/fermium (v.14.15.0)`.
 
 ### Using NPM
 
@@ -19,14 +17,14 @@ Depending on your preferred package manager, follow the instructions below to de
 
 ## Test your service
 
-This template contains a single lambda function triggered by an HTTP request made on the provisioned API Gateway REST API `/api/visitors?date=` route with `GET` method. The request body must be provided as `application/json`.
+This contains a single lambda function triggered by an HTTP request made on the provisioned API Gateway REST API `/api/visitors?date=` route with `GET` method.
 
 - requesting any other path than `/api/visitors?date=` with any other method than `GET` will result in API Gateway returning a `403` HTTP error code
 - A `GET` request to `/api/visitors?date=` with a query param **not** containing a string property named `date` will result in API Gateway returning a `400` HTTP error code
 - A `GET` request to `/api/visitors?date=xxx&ignore=` with a query param **not** containing a string property named `ignore` will not result in API Gateway returning a `400` HTTP error code as it is optional
 - A `GET` request to `/api/visitors?date=` with a query param containing a string property named `date` will result in API Gateway returning a `200` HTTP status code with a 'attendance' object that is processed by the Lambda. 
 
-> :warning: As is, this template, once deployed, opens a **public** endpoint within your AWS account resources. Anybody with the URL can actively execute the API Gateway endpoint and the corresponding lambda. This can be protected using an authentication method.
+> :warning: As is, once deployed, it opens a **public** endpoint within the AWS account resources. Anybody with the URL can actively execute the API Gateway endpoint and the corresponding lambda. This can be protected using an authentication method.
 
 ### Locally
 
@@ -38,7 +36,7 @@ Check the [sls invoke local command documentation](https://www.serverless.com/fr
 
 ### Remotely
 
-Copy and replace your `url` - found in Serverless `deploy` command output - and `date` and `ignore` parameters in the following `curl` command in your terminal or in Postman to test your newly deployed application.
+Copy the `url` - found in Serverless `deploy` command output - and update `date` and `ignore` parameters in the following `curl` command in your terminal or in Postman to test the application.
 
 ```
 curl --location --request GET 'https://dukls79rad.execute-api.ap-south-1.amazonaws.com/api/visitors?date=1404198000000&ignore=avila_adobe'
